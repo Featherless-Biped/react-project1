@@ -1,50 +1,41 @@
-import { useState } from "react";
-function AddNote({ onAdd }) {
-    const [userDetails, setUserDetails] = useState({});
+import { useState } from 'react';
 
-    const handleChange = (e) => {
-        const { value, name } = e.target;
+const AddNote = ({ handleAddNote }) => {
+	const [noteText, setNoteText] = useState('');
+	const characterLimit = 200;
 
-        setUserDetails({ ...userDetails, [name]: value, id: Math.random() });
-    };
+	const handleChange = (event) => {
+		if (characterLimit - event.target.value.length >= 0) {
+			setNoteText(event.target.value);
+		}
+	};
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onAdd(userDetails);
-    };
+	const handleSaveClick = () => {
+		if (noteText.trim().length > 0) {
+			handleAddNote(noteText);
+			setNoteText('');
+		}
+	};
 
-    return (
-        <div className="note new">
-            <textarea
-                rows="8"
-                cols="10"
-                placeholder="Type a note"
-                value={userDetails.text}
-                onChange={handleChange}
-            ></textarea>
-
-            <div className="note-footer">
-                <small>200 Remaining</small>
-                <button className="submit" onClick={handleSubmit}>
-                    Submit
-                </button>
-            </div>
-        </div>
-    );
-}
+	return (
+		<div className='note new'>
+			<textarea
+				rows='8'
+				cols='10'
+				placeholder='Type to add a note...'
+				value={noteText}
+				onChange={handleChange}
+			></textarea>
+			<div className='note-footer'>
+				<small>
+					{characterLimit - noteText.length} Remaining
+				</small>
+				<button className='save' onClick={handleSaveClick}>
+					Save
+				</button>
+			</div>
+		</div>
+	);
+};
 
 export default AddNote;
-
-// const AddNote = ({handleAddNote}) => {
-//     // const [noteTitle, setNoteTitle] = useState("")
-//     const [noteText, setNotesText] = useState("");
-//     const handleChange = (e) => {
-//         setNotesText(e.target.value);
-//         console.log(e.target.value)
-//     };
-//     const handleSaveClick = () =>{
-//         handleAddNote(noteText)
-//         // handleAddTitle(noteTitle)
-//         // setNotesText('')
-
-//     }
