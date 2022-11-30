@@ -1,6 +1,7 @@
-const Note = ({ id, text, date, handleDeleteNote }) => {
+const Note = ({ id, title, text, date, handleDeleteNote }) => {
 	return (
 		<div className='note'>
+			<h3>{title}</h3>
 			<span>{text}</span>
 			<div className='note-footer'>
 				<small>{date}</small>

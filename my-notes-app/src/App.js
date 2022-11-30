@@ -7,16 +7,19 @@ const App = () => {
 	const [notes, setNotes] = useState([
 		{
 			id: nanoid(),
+			title: "Note 2",
 			text: 'This is my first note!',
 			date: '15/04/1902',
 		},
 		{
 			id: nanoid(),
+			title: "Note 4",
 			text: 'This is my second note!',
 			date: '21/04/1703',
 		},
 		{
 			id: nanoid(),
+			title: "Note 33",
 			text: 'This is my third note!',
 			date: '320 BC',
 		},
@@ -42,10 +45,11 @@ const App = () => {
 		);
 	}, [notes]);
 
-	const addNote = (text) => {
+	const addNote = (text,title) => {
 		const date = new Date();
 		const newNote = {
 			id: nanoid(),
+			title: title,
 			text: text,
 			date: date.toLocaleDateString(),
 		};
