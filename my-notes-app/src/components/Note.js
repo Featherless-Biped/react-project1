@@ -1,18 +1,25 @@
-const Note = ({ id, title, text, date, handleDeleteNote }) => {
-	return (
-		<div className='note'>
-			<h3>{title}</h3>
-			<span>{text}</span>
-			<div className='note-footer'>
-				<small>{date}</small>
-				<button
-					onClick={() => handleDeleteNote(id)}
-					className='delete-icon'
-					size='1.3em'
-				></button>
-			</div>
-		</div>
-	);
+// import { Button } from "bootstrap";
+import Button from "react-bootstrap/Button";
+const Note = ({ id, title, text, date, handleDeleteNote, handleShowModal }) => {
+    return (
+        <div className="note"
+		onClick={() => handleShowModal()}>
+            <h3>{title}</h3>
+            <span>{text}</span>
+            <div className="note-footer">
+                <small>{date}</small>
+                <Button
+                    onClick={() => handleDeleteNote(id)}
+                    className="delete-icon"
+                    size="1.3em"
+                    variant="danger"
+                >
+                    X
+                </Button>
+            </div>
+        </div>
+    );
 };
 
 export default Note;
+
