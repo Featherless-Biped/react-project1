@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import NotesList from "./components/NotesList";
 import ModalNote from "./components/ModalShit";
+
 const App = () => {
+	
     const [notes, setNotes] = useState([
         {
             id: nanoid(),
@@ -61,21 +63,30 @@ const App = () => {
         const newNotes = notes.filter((note) => note.id !== id);
         setNotes(newNotes);
     };
-
+const [note, setNote] = useState('');
     const [showModal, setShowModal] = useState(false);
     const openModal = () => {
-        setShowModal((prev) => !prev);
+        setShowModal(!showModal);
     };
+	const chooseNoteModal = (note) => {
+		const noteToMakeModal = notes.findIndex(
+		  (noteItem) => note.id === noteItem.id
+		);
+		const currentNotes = notes;
+		currentNotes[noteToMakeModal] = note;
+		setNotes(currentNotes);
+		showModal();
+	  };
 
     return (
         <div className="container">
             <NotesList
-                notes={notes}
+                note={note}
                 handleAddNote={addNote}
                 handleDeleteNote={deleteNote}
-                handleShowModal={openModal}
+                handleShowModal={chooseNoteModal}
             />
-        <ModalNote showModal={showModal} setShowModal={setShowModal} />
+        <ModalNote showModal={openModal} setShowModal={setShowModal} note={notes} chooseNoteModal={chooseNoteModal} />
         </div>
     );
 };

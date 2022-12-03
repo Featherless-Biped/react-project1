@@ -16,15 +16,13 @@ function ModalNote({ showModal, handleShowModal, note }) {
             {noteModal && (
                 <Modal show={showModal} onHide={handleShowModal}>
                     <Modal.Header closeButton>
-                        <Modal.Title>The Note</Modal.Title>
+                        <Modal.Title>{noteModal.title}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form.Label>Edit Note Title:</Form.Label>
-                        <Form.Control
-                            placeholder="Title"
-                            value={noteModal.title}
-                            
-                        />
+                        <div>
+                            {noteModal.title}
+                            </div>
+        
                         <Form.Label>Edit Note:</Form.Label>
                         <Form.Control
                             placeholder="Message"
@@ -44,3 +42,34 @@ function ModalNote({ showModal, handleShowModal, note }) {
     );
 }
 export default ModalNote;
+
+
+
+
+// <>
+//             {noteModal && (
+//                 <Modal show={showModal} onHide={handleShowModal}>
+//                     <Modal.Header closeButton>
+//                         <Modal.Title>{noteModal.title}</Modal.Title>
+//                     </Modal.Header>
+//                     <Modal.Body>
+//                         <div>
+//                             {noteModal.title}
+//                             </div>
+        
+//                         <Form.Label>Edit Note:</Form.Label>
+//                         <Form.Control
+//                             placeholder="Message"
+//                             value={noteModal.text}
+                            
+//                         />
+//                     </Modal.Body>
+//                     <Modal.Footer>
+//                         <Button variant="secondary" onClick={handleShowModal}>
+//                             Close
+//                         </Button>
+//                         <Button>Save Changes</Button>
+//                     </Modal.Footer>
+//                 </Modal>
+//             )}
+//         </>
