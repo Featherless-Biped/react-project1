@@ -1,22 +1,28 @@
 import { Modal } from "bootstrap";
 // import React, { useState } from "react";
 // import { ModalFooter } from "react-bootstrap";
-// import Button from "react-bootstrap/Button";
+import Button from "react-bootstrap/Button";
 // import Modal from "react-bootstrap/Modal";
 
-function ModalNote({ showModal, setShowModal, id, title, text, date }) {
+function ModalNote({ showModal }) {
     if (showModal) {
         return (
-            <Modal id={id}>
+            <>
+            <Modal>
                 <Modal.Header closeButton>
-                    <Modal.Title id="example-modal-sizes-title-lg">
-                        {title}
-                    </Modal.Title>
+                    <Modal.Title>Modal heading</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>{text}</Modal.Body>
-                <Modal.Footer>{date}</Modal.Footer>
-
+                <Modal.Body>
+                    Woohoo, you're reading this text in a modal!
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary">Close</Button>
+                    <Button variant="primary">Save Changes</Button>
+                </Modal.Footer>
             </Modal>
+            </>
+
+
         );
     } else {
         return null;
@@ -24,3 +30,13 @@ function ModalNote({ showModal, setShowModal, id, title, text, date }) {
 }
 
 export default ModalNote;
+
+// <Modal id={id}>
+// <Modal.Header closeButton>
+//     <Modal.Title id="example-modal-sizes-title-lg">
+//         {title}
+//     </Modal.Title>
+// </Modal.Header>
+// <Modal.Body>{text}</Modal.Body>
+// <Modal.Footer>{date}</Modal.Footer>
+// </Modal>

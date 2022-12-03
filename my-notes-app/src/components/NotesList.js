@@ -1,5 +1,6 @@
 import Note from './Note';
 import AddNote from './AddNote';
+
 // import ModalNote from './ModalNotes';
 
 const NotesList = ({
