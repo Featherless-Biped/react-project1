@@ -1,9 +1,9 @@
 // import { Button } from "bootstrap";
 import Button from "react-bootstrap/Button";
-const Note = ({ id, title, text, date, handleDeleteNote, chooseNoteModal }) => {
+const Note = ({ id, title, text, date, handleDeleteNote, handleShowModal }) => {
     return (
         <div className="note"
-		onClick={() => chooseNoteModal()}>
+		onClick={() => handleShowModal(id)}>
             <h3>{title}</h3>
             <span>{text}</span>
             <div className="note-footer">
