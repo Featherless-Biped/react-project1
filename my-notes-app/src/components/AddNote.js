@@ -4,6 +4,7 @@ const AddNote = ({ handleAddNote, note, handleCloseModal }) => {
     const [toEdit, setToEdit] = useState(false);
     const [noteText, setNoteText] = useState("");
     const [noteTitle, setNoteTitle] = useState("");
+ 
     const characterLimit = 200;
 
     useEffect(() => {

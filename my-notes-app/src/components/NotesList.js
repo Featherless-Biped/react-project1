@@ -18,6 +18,7 @@ const NotesList = ({
                         title={note.title}
                         text={note.text}
                         date={note.date}
+                        newDate={note.newDate}
                         handleDeleteNote={handleDeleteNote}
                         handleShowModal={handleShowModal}
                     />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import NotesList from "./components/NotesList";
-import ModalNote from "./components/ModalShit";
+import ModalNote from "./components/NotetoModalEdit";
 
 const App = () => {
     const [notes, setNotes] = useState([
@@ -39,23 +39,27 @@ const App = () => {
         localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
     }, [notes]);
 
-    const addNote = (id, text, title) => {
+    const addNote = (id, text, title, newDate) => {
         if (id == 0) {
             const date = new Date();
+            const newDate = undefined;
             const newNote = {
                 id: nanoid(),
                 title: title,
                 text: text,
                 date: date.toLocaleDateString(),
+                newDate: newDate,
             };
             const newNotes = [...notes, newNote];
             setNotes(newNotes);
         } else {
+            newDate = new Date();
             const newNotes = [...notes];
             for (let i = 0; i < newNotes.length; i++) {
                 if (newNotes[i].id == id) {
                     newNotes[i].title = title;
                     newNotes[i].text = text;
+                    newNotes[i].newDate = newDate.toLocaleDateString();
                     break;
                 }
             }
